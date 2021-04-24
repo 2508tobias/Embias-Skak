@@ -19,18 +19,21 @@ function setup() {
 function draw() {
     background(100);
     spilleplade();
-    mouse();
-    // for (var i = 0; i < hvidebrikker.length; i++){
-    //   isWhite = true;
-    //   hvidebrikker[i].render();
-    //   hvidebrikker2[i].render();
-    // }
+    for (var i = 0; i < hvidebrikker.length; i++){
+      isWhite = true;
+      isSelected = false;
+      hvidebrikker[i].render();
+      hvidebrikker2[i].render();
+    }
 
-    // for (var i = 0; i < sortebrikker.length; i++){
-    //   isWhite = false;
-    //   sortebrikker[i].render();
-    //   sortebrikker2[i].render();
-    // }
+    for (var i = 0; i < sortebrikker.length; i++){
+      isWhite = false;
+      isSelected = true;
+      sortebrikker[i].render();
+      sortebrikker2[i].render();
+    }
+    mouse();
+    mouseClicked();
 }
 
 function spilleplade(){
@@ -48,6 +51,15 @@ function spilleplade(){
 }
 
 function mouseClicked(){
+  let selectPosX = Math.round(map(mouseX, 0, 400, 0, 7));
+  let selectPosY = Math.round(map(mouseY, 0, 400, 0, 7));
+ 
+  for (var i = 0; i < hvidebrikker.length; i++){
+    if(hvidebrikker[i].matrixPos.y == selectPosX){
+      hvidebrikker[i].isSelected = true;
+    }
+  }
+
   console.log(Math.round(map(mouseX, 0, 400, 0, 7)), Math.round(map(mouseY, 0, 400, 0, 7)));
 }
 
@@ -56,6 +68,6 @@ function mouse(){
     let coordmouseY = map(mouseY, 0, 400, 0, 7);
     let matmouseX = Math.round(coordmouseX);
     let matmouseY = Math.round(coordmouseY);
-    fill(255, 0, 0);
+    fill(255, 255, 0);
     circle((matmouseX * tileSize) + tileSize / 2 , (matmouseY * tileSize) + tileSize / 2, 10);
 }
