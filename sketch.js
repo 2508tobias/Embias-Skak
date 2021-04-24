@@ -28,12 +28,12 @@ function draw() {
 
     for (var i = 0; i < sortebrikker.length; i++){
       isWhite = false;
-      isSelected = true;
+      isSelected = false;
       sortebrikker[i].render();
       sortebrikker2[i].render();
     }
     mouse();
-    mouseClicked();
+    // mouseClicked();
 }
 
 function spilleplade(){
@@ -55,8 +55,17 @@ function mouseClicked(){
   let selectPosY = Math.round(map(mouseY, 0, 400, 0, 7));
  
   for (var i = 0; i < hvidebrikker.length; i++){
-    if(hvidebrikker[i].matrixPos.y == selectPosX){
+    if(hvidebrikker[i].matrixPos.x == selectPosX && hvidebrikker[i].matrixPos.y == selectPosY){
       hvidebrikker[i].isSelected = true;
+    }
+    if(hvidebrikker2[i].matrixPos.x == selectPosX && hvidebrikker2[i].matrixPos.y == selectPosY){
+      hvidebrikker2[i].isSelected = true;
+    }
+    if(sortebrikker[i].matrixPos.x == selectPosX && sortebrikker[i].matrixPos.y == selectPosY){
+      sortebrikker[i].isSelected = true;
+    }
+    if(sortebrikker2[i].matrixPos.x == selectPosX && sortebrikker2[i].matrixPos.y == selectPosY){
+      sortebrikker2[i].isSelected = true;
     }
   }
 

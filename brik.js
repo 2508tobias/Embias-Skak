@@ -3,6 +3,8 @@ class Brik {
         this.matrixPos = createVector(x, y);
         this.pixelPos = createVector(x * tileSize + tileSize / 2, y* tileSize + tileSize / 2);
         this.letter = letter;
+        this.isWhite = Boolean;
+        this.isSelected = Boolean;
     }
 
     // show(){
@@ -10,10 +12,10 @@ class Brik {
     // }
     render() {
 
-        if(isSelected == true) {
+        if(this.isSelected == true) {
             fill(0, 255, 0);
         } else {
-            if(isWhite == true) {
+            if(this.isWhite == true) {
                 fill(255, 0 , 0);
             } else {
                 fill(0, 204, 255);
