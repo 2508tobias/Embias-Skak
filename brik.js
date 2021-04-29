@@ -1,10 +1,9 @@
 class Brik {
-    constructor(x, y, isWhite, letter, isSelected){
+    constructor(x, y, isWhite, isSelected){
         this.matrixPos = createVector(x, y);
         this.pixelPos = createVector(x * tileSize + tileSize / 2, y* tileSize + tileSize / 2);
-        this.letter = letter;
-        this.isWhite = Boolean;
-        this.isSelected = Boolean;
+        this.white = isWhite;
+        this.sel = isSelected;
     }
 
     // show(){
@@ -12,27 +11,18 @@ class Brik {
     // }
     render() {
 
-        if(this.isSelected == true) {
+        if(this.sel) {
             fill(0, 255, 0);
+            
         } else {
-            if(this.isWhite == true) {
+            if(this.white) {
                 fill(255, 0 , 0);
-            } else {
-                fill(0, 204, 255);
+            }
+            if(!this.white){
+                fill(0, 0, 255)
             }
         }
         
-
-        
-        circle(this.pixelPos.x, this.pixelPos.y, 30);
-        
-        
-        
+        circle(this.pixelPos.x, this.pixelPos.y, tileSize * 0.5);
     }
-}
-
-class Konge extends Brik {
-    constructor(x, y, isWhite, letter){
-        this.letter = "K";
-    }  
 }

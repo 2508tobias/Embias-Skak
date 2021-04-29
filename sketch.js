@@ -5,14 +5,13 @@ var sortebrikker = [];
 var sortebrikker2 = [];
 var testbrikker = [];
 
-
 function setup() {
     createCanvas(400, 400);
     for (var i = 0; i < 8; i++){
-      hvidebrikker.push(new Brik(i, 0, true, ));
-      hvidebrikker2.push(new Brik(i, 1, true));
-      sortebrikker.push(new Brik(i, 7, true));
-      sortebrikker2.push(new Brik(i, 6, true));
+      hvidebrikker.push(new Brik(i, 0, true, false));
+      hvidebrikker2.push(new Brik(i, 1, true, false));
+      sortebrikker.push(new Brik(i, 7, false, false));
+      sortebrikker2.push(new Brik(i, 6, false, false));
     }
 }
 
@@ -20,8 +19,8 @@ function draw() {
     background(100);
     spilleplade();
     for (var i = 0; i < hvidebrikker.length; i++){
-      isWhite = true;
-      isSelected = false;
+      // isWhite = true;
+      // isSelected = false;
       hvidebrikker[i].render();
       hvidebrikker2[i].render();
     }
@@ -33,7 +32,7 @@ function draw() {
       sortebrikker2[i].render();
     }
     mouse();
-    // mouseClicked();
+    
 }
 
 function spilleplade(){
@@ -55,21 +54,23 @@ function mouseClicked(){
   let selectPosY = Math.round(map(mouseY, 0, 400, 0, 7));
  
   for (var i = 0; i < hvidebrikker.length; i++){
-    if(hvidebrikker[i].matrixPos.x == selectPosX && hvidebrikker[i].matrixPos.y == selectPosY){
-      hvidebrikker[i].isSelected = true;
+    if(hvidebrikker[i].matrixPos.x == selectPosX && hvidebrikker[i].matrixPos.y == selectPosY && hvidebrikker[i].sel == false){
+      hvidebrikker[i].sel = true;
     }
     if(hvidebrikker2[i].matrixPos.x == selectPosX && hvidebrikker2[i].matrixPos.y == selectPosY){
-      hvidebrikker2[i].isSelected = true;
+      hvidebrikker2[i].sel = true;
     }
     if(sortebrikker[i].matrixPos.x == selectPosX && sortebrikker[i].matrixPos.y == selectPosY){
-      sortebrikker[i].isSelected = true;
+      sortebrikker[i].sel = true;
     }
     if(sortebrikker2[i].matrixPos.x == selectPosX && sortebrikker2[i].matrixPos.y == selectPosY){
-      sortebrikker2[i].isSelected = true;
+      sortebrikker2[i].sel = true;
     }
+    // if(hvidebrikker[i].matrixPos.x == selectPosX && hvidebrikker[i].matrixPos.y == selectPosY && hvidebrikker[i].sel == true){
+    //   hvidebrikker[i].sel = false;
+    // }
   }
-
-  console.log(Math.round(map(mouseX, 0, 400, 0, 7)), Math.round(map(mouseY, 0, 400, 0, 7)));
+  console.log(hvidebrikker);
 }
 
 function mouse(){
