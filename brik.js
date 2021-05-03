@@ -1,7 +1,7 @@
 class Brik {
-    constructor(x, y, isWhite, isSelected){
+    constructor(x, y, isWhite, isSelected) {
         this.matrixPos = createVector(x, y);
-        this.pixelPos = createVector(x * tileSize + tileSize / 2, y* tileSize + tileSize / 2);
+        this.pixelPos = createVector(x * tileSize + tileSize / 2, y * tileSize + tileSize / 2);
         this.white = isWhite;
         this.sel = isSelected;
     }
@@ -11,18 +11,17 @@ class Brik {
     // }
     render() {
 
-        if(this.sel) {
-            fill(0, 255, 0);
-            
+        if (this.sel) {
+            circle(this.pixelPos.x, this.pixelPos.y, tileSize * 0.75);
         } else {
-            if(this.white) {
-                fill(255, 0 , 0);
+            if (this.white) {
+                fill(255, 0, 0);
             }
-            if(!this.white){
+            if (!this.white) {
                 fill(0, 0, 255)
             }
         }
-        
+
         circle(this.pixelPos.x, this.pixelPos.y, tileSize * 0.5);
     }
 }
