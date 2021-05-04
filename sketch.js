@@ -8,7 +8,7 @@ var testbrikker = [];
 function setup() {
   createCanvas(400, 400);
   for (var i = 0; i < 8; i++) {
-    hvidebrikker.push(new Brik(i, 0, true, false));
+    hvidebrikker.push(new Brik(i, 0, true, false, "Skak"));
     hvidebrikker2.push(new Brik(i, 1, true, false));
     sortebrikker.push(new Brik(i, 7, false, false));
     sortebrikker2.push(new Brik(i, 6, false, false));
